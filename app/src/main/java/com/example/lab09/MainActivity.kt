@@ -7,6 +7,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -30,8 +33,6 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
-
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,19 +80,22 @@ fun BarraSuperior() {
 
 @Composable
 fun BarraInferior(navController: NavHostController) {
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+
     NavigationBar(
         containerColor = Color.LightGray
     ) {
         NavigationBarItem(
-            icon = { Icon(Icons.Outlined.Home, contentDescription = "Inicio") },
+            icon = { Icon(Icons.Default.Home, contentDescription = "Inicio") },
             label = { Text("Inicio") },
-            selected = navController.currentDestination?.route == "inicio",
+            selected = currentRoute == "inicio",
             onClick = { navController.navigate("inicio") }
         )
         NavigationBarItem(
-            icon = { Icon(Icons.Outlined.Favorite, contentDescription = "Posts") },
+            icon = { Icon(Icons.Default.Favorite, contentDescription = "Posts") },
             label = { Text("Posts") },
-            selected = navController.currentDestination?.route == "posts",
+            selected = currentRoute == "posts",
             onClick = { navController.navigate("posts") }
         )
     }
