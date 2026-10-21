@@ -60,7 +60,6 @@ fun ProgPrincipal9() {
         content =   { paddingValues -> Contenido(paddingValues, navController, servicio) }
     )
 }
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BarraSuperior() {
@@ -77,7 +76,6 @@ fun BarraSuperior() {
         )
     )
 }
-
 @Composable
 fun BarraInferior(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -100,7 +98,6 @@ fun BarraInferior(navController: NavHostController) {
         )
     }
 }
-
 @Composable
 fun Contenido(
     pv: PaddingValues,
